@@ -8,6 +8,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.tsp7.rogue.block.ModBlocks;
 
 
 public class ModItemGroups {
@@ -16,6 +17,8 @@ public class ModItemGroups {
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.example_tab"))
             .icon(() -> new ItemStack(ModItems.EXAMPLE_ITEM)).entries((displayContext, entries) -> {
                 entries.add(ModItems.EXAMPLE_ITEM);
+
+                entries.add(ModBlocks.EXAMPLE_BLOCK);
     }).build());
 
     public static void registerItemGroups() {
