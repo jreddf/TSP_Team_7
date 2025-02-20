@@ -24,6 +24,6 @@ public class ModItems {
     public static void registerModItems() {
         Rogue.LOGGER.info("Registering items for" + Rogue.MOD_ID);
 
-        //ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(ModItems::addItemsToIngredientItemGroup);
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(ModItems::addItemsToIngredientItemGroup);
     }
 }
