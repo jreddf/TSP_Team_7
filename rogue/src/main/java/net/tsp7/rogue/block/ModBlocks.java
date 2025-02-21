@@ -12,9 +12,14 @@ import net.minecraft.util.Identifier;
 import net.tsp7.rogue.Rogue;
 
 public class ModBlocks {
+    // This is the code that creates the block, use this to create your own blocks.
+    // You can either copy settings from existing vanilla blocks, or modify them manually.
+    // If you copy and want to modify some values make sure the copy comes first
     public static final Block EXAMPLE_BLOCK = registerBlock("example_block",
             new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
 
+
+    // Everything below are helper methods for creating new blocks. Do not modify
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
         return Registry.register(Registries.BLOCK, new Identifier(Rogue.MOD_ID, name), block);

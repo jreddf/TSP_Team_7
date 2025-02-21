@@ -12,15 +12,19 @@ import net.tsp7.rogue.block.ModBlocks;
 
 
 public class ModItemGroups {
+    // Adds items into custom creative mode tab. Do not modify unless adding/removing an item
     public static final ItemGroup ITEMS = Registry.register(Registries.ITEM_GROUP,
-            new Identifier(Rogue.MOD_ID, "example_item"),
+            new Identifier(Rogue.MOD_ID, "example_tab"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.example_tab"))
             .icon(() -> new ItemStack(ModItems.EXAMPLE_ITEM)).entries((displayContext, entries) -> {
+
+                // Actual entries in the tab, the order they are listed is the order they appear.
                 entries.add(ModItems.EXAMPLE_ITEM);
 
                 entries.add(ModBlocks.EXAMPLE_BLOCK);
     }).build());
 
+    // Helper log
     public static void registerItemGroups() {
         Rogue.LOGGER.info("Registering Item Groups for " + Rogue.MOD_ID);
     }
