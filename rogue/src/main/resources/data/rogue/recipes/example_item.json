@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "rogue:example_block"
+    }
+  ],
+  "result": {
+    "item": "rogue:example_item",
+    "count": 9
+  }
+}
