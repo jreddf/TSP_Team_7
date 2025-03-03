@@ -26,7 +26,7 @@ public class ModItems {
 
     // If you want to add items to a vanilla group, create a method similar to the one above
     public static void registerModItems() {
-        Rogue.LOGGER.info("Registering items for" + Rogue.MOD_ID);
+        Rogue.LOGGER.info("Registering items for " + Rogue.MOD_ID);
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(ModItems::addItemsToIngredientItemGroup);
     }
