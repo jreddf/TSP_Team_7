@@ -2,6 +2,8 @@
   "item.rogue.example_item": "Example Item",
 
   "block.rogue.example_block": "Example Block",
+  
+  "block.rogue.pine_log_block": "Pine Log",
 
   "itemgroup.example_tab": "Example Tab"
 }

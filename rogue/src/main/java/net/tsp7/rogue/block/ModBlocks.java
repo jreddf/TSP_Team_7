@@ -33,4 +33,7 @@ public class ModBlocks {
     public static void registerModBlocks() {
         Rogue.LOGGER.info("Registering ModBlocks for " + Rogue.MOD_ID);
     }
+
+    public static final Block PINE_LOG_BLOCK= registerBlock("pine_log_block",
+       new Block(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
 }

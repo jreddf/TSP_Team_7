@@ -24,6 +24,7 @@ public class ModItemGroups {
                 entries.add(ModItems.LVL2_SWORD);
                 entries.add(ModItems.LVL3_SWORD);
                 entries.add(ModBlocks.EXAMPLE_BLOCK);
+                entries.add(ModBlocks.PINE_LOG_BLOCK);
     }).build());
 
     // Helper log
