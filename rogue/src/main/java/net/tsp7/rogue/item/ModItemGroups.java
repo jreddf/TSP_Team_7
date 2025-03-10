@@ -20,7 +20,9 @@ public class ModItemGroups {
 
                 // Actual entries in the tab, the order they are listed is the order they appear.
                 entries.add(ModItems.EXAMPLE_ITEM);
-
+                entries.add(ModItems.LVL1_SWORD);
+                entries.add(ModItems.LVL2_SWORD);
+                entries.add(ModItems.LVL3_SWORD);
                 entries.add(ModBlocks.EXAMPLE_BLOCK);
     }).build());
 

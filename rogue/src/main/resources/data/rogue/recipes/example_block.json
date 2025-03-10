@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "eee",
+    "eee",
+    "eee"
+  ],
+  "key": {
+    "e": {
+      "item": "rogue:example_item"
+    }
+  },
+  "result": {
+    "item": "rogue:example_block"
+  }
+}

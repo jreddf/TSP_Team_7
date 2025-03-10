@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/TSP.iml" filepath="$PROJECT_DIR$/.idea/TSP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/rogue.main.iml" filepath="$PROJECT_DIR$/.idea/modules/rogue.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/rogue.test.iml" filepath="$PROJECT_DIR$/.idea/modules/rogue.test.iml" />
     </modules>
   </component>
 </project>
