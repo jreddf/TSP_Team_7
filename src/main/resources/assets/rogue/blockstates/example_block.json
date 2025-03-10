@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "rogue:block/example_block"
+    }
+  }
+}
