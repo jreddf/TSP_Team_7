@@ -1,6 +1,6 @@
 {
     "parent": "block/cube_all",
     "textures": {
-      "all": "rogue:block/pine_log_block"
+      "all": "rogue:block/pine_planks_block"
     }
   }
