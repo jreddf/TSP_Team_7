@@ -3,7 +3,11 @@
 
   "block.rogue.example_block": "Example Block",
   
-  "block.rogue.pine_log_block": "Pine Log",
+  "block.rogue.pine_log_block": "pine_log_block",
+
+  "block.rogue.pine_planks_block": "pine_planks_block",
+
+  "block.rogue.cracked_red_stone_bricks": "cracked_red_stone_bricks",
 
   "itemgroup.example_tab": "Example Tab"
 }

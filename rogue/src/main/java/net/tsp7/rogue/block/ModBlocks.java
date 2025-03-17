@@ -36,4 +36,11 @@ public class ModBlocks {
 
     public static final Block PINE_LOG_BLOCK= registerBlock("pine_log_block",
        new Block(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
+
+    public static final Block PINE_PLANKS_BLOCK= registerBlock("pine_planks_block",
+       new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
+    
+    public static final Block CRACKED_RED_STONE_BRICK = registerBlock("cracked_red_stone_brick",
+       new Block(FabricBlockSettings.copyOf(Blocks.CRACKED_STONE_BRICKS)));
 }
+
