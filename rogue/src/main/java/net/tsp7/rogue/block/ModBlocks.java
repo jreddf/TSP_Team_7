@@ -3,6 +3,7 @@ package net.tsp7.rogue.block;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
+import net.minecraft.block.PillarBlock;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -35,12 +36,12 @@ public class ModBlocks {
     }
 
     public static final Block PINE_LOG_BLOCK= registerBlock("pine_log_block",
-       new Block(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
+       new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
 
     public static final Block PINE_PLANKS_BLOCK= registerBlock("pine_planks_block",
-       new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
+       new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
     
-    public static final Block CRACKED_RED_STONE_BRICK = registerBlock("cracked_red_stone_brick",
-       new Block(FabricBlockSettings.copyOf(Blocks.CRACKED_STONE_BRICKS)));
+    public static final Block CRACKED_RED_STONE_BRICK = registerBlock("cracked_red_stone_bricks",
+       new PillarBlock(FabricBlockSettings.copyOf(Blocks.CRACKED_STONE_BRICKS)));
 }
 
