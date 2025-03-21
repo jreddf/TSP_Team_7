@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "category": "building",
+    "ingredients": [
+        {
+            "item": "rogue:pine_log_block"
+        }
+    ],
+    "result": {
+        "item": "rogue:pine_planks_block",
+        "count": 4
+    }
+}

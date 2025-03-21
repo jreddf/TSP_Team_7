@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+      "end": "rogue:block/pine_log_block_top",
+      "side": "rogue:block/pine_log_block_north"
+      
+    }
+  }
