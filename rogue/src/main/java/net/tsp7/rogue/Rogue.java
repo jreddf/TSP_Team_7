@@ -8,6 +8,8 @@ import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 import net.tsp7.rogue.block.ModBlocks;
+import net.tsp7.rogue.entity.ModEntities;
+import net.tsp7.rogue.entity.custom.EvilGolemEntity;
 import net.tsp7.rogue.item.ModItemGroups;
 import net.tsp7.rogue.item.ModItems;
 import net.tsp7.rogue.dimension.modWorldGen;
@@ -29,5 +31,6 @@ public class Rogue implements ModInitializer {
 				.destDimID(new Identifier(Rogue.MOD_ID, "roguedimension"))
 				.tintColor(50,200,255).
 				registerPortal();
+		FabricDefaultAttributeRegistry.register(ModEntities.EVIL_GOLEM, EvilGolemEntity.createEvilGolemAttributes());
 	}
 }
