@@ -1,7 +1,4 @@
 {
-    "parent": "item/generated",
-    "textures": {
-      "layer0": "rogue:item/pine_log_block"
-    }
-   }
+  "parent": "rogue:block/pine_log_block"
+}
    

@@ -1,7 +1,4 @@
 {
-    "parent": "item/generated",
-    "textures": {
-      "layer0": "rogue:item/cracked_red_stone_bricks"
-    }
-   }
+  "parent": "rogue:block/cracked_red_stone_bricks"
+}
    

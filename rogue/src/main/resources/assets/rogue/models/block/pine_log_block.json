@@ -1,6 +1,8 @@
 {
-    "parent": "block/cube_all",
+    "parent": "block/cube_column",
     "textures": {
-      "all": "rogue:block/pine_log_block"
+      "end": "rogue:block/pine_log_block_top",
+      "side": "rogue:block/pine_log_block_north"
+      
     }
   }

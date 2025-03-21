@@ -11,6 +11,8 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.tsp7.rogue.Rogue;
+import net.minecraft.registry.tag.TagKey;
+import net.minecraft.registry.RegistryKeys;
 
 public class ModBlocks {
     // This is the code that creates the block, use this to create your own blocks.
@@ -39,9 +41,9 @@ public class ModBlocks {
        new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
 
     public static final Block PINE_PLANKS_BLOCK= registerBlock("pine_planks_block",
-       new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
+       new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
     
     public static final Block CRACKED_RED_STONE_BRICK = registerBlock("cracked_red_stone_bricks",
-       new PillarBlock(FabricBlockSettings.copyOf(Blocks.CRACKED_STONE_BRICKS)));
+       new Block(FabricBlockSettings.copyOf(Blocks.CRACKED_STONE_BRICKS)));
 }
 
