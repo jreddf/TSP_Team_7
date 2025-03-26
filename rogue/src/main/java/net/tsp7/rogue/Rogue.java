@@ -20,6 +20,12 @@ public class Rogue implements ModInitializer {
 	public static final String MOD_ID = "rogue";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
+	public static final EntityType<roguebaseenemy> Enemy = Registry.register(
+			Registries.ENTITY_TYPE,
+			Identifier.of("entitytesting", "rogue"),
+			EntityType.Builder.create(roguebaseenemy::new, SpawnGroup.CREATURE).setDimensions(0.75f, 0.75f).build("rogue")
+	);
+	
 	@Override
 	public void onInitialize() {
 		ModItemGroups.registerItemGroups();
@@ -32,5 +38,6 @@ public class Rogue implements ModInitializer {
 				.tintColor(50,200,255).
 				registerPortal();
 		FabricDefaultAttributeRegistry.register(ModEntities.EVIL_GOLEM, EvilGolemEntity.createEvilGolemAttributes());
+		FabricDefaultAttributeRegistry.register(Enemy, roguebaseenemy.createMobAttributes());
 	}
 }
