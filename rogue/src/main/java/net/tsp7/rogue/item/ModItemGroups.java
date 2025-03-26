@@ -23,6 +23,14 @@ public class ModItemGroups {
                 entries.add(ModItems.LVL1_SWORD);
                 entries.add(ModItems.LVL2_SWORD);
                 entries.add(ModItems.LVL3_SWORD);
+                entries.add(ModItems.RustyHelmet);
+                entries.add(ModItems.RustyChestplate);
+                entries.add(ModItems.RustyLeggings);
+                entries.add(ModItems.RustyBoots);
+                entries.add(ModItems.MythrilHelmet);
+                entries.add(ModItems.MythrilChestplate);
+                entries.add(ModItems.MythrilLeggings);
+                entries.add(ModItems.MythrilBoots);
                 entries.add(ModBlocks.EXAMPLE_BLOCK);
                 entries.add(ModBlocks.PINE_LOG_BLOCK);
                 entries.add(ModBlocks.CRACKED_RED_STONE_BRICK);

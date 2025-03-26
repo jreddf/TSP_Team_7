@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 2,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "rogue:mythrilleggings",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "rogue:mythrilhelmet",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "rogue:mythrilchestplate",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "rogue:mythrilboots",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "rogue:level_3_sword",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 5
+        }
+      ],
+      "functions": []
+    }
+  ],
+  "functions": []
+}
