@@ -8,6 +8,9 @@ import net.tsp7.rogue.entity.ModEntities;
 import net.tsp7.rogue.entity.client.EvilGolemModel;
 import net.tsp7.rogue.entity.client.EvilGolemRenderer;
 import net.tsp7.rogue.entity.client.ModModelLayers;
+import net.minecraft.util.Identifier;
+import net.tsp7.rogue.entity.rogueRenderer;
+import net.tsp7.rogue.entity.roguebaseenemyModel;
 
 public class RogueClient implements ClientModInitializer {
     public static final EntityModelLayer MODEL_CUBE_LAYER = new EntityModelLayer(new Identifier("entitytesting", "rogue"), "main");
