@@ -11,6 +11,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.tsp7.rogue.Rogue;
+import net.tsp7.rogue.item.custom.*;
 
 public class ModItems {
     // Basic item, variable name should be all caps, name within register should be all lowercase and not include any spaces

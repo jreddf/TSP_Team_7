@@ -1,0 +1,12 @@
+{
+  "type": "rogue:upgrade_table",
+  "ingredients": [
+    {
+      "item": "rogue:level_1_sword"
+    }
+  ],
+  "output": {
+    "item": "rogue:level_2_sword",
+    "count": 1
+  }
+}
