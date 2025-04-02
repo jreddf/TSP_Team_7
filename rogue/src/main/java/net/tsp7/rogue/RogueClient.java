@@ -7,6 +7,21 @@ import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.util.Identifier;
 import net.tsp7.rogue.Enemy.rogueRenderer;
 import net.tsp7.rogue.Enemy.roguebaseenemyModel;
+import net.minecraft.client.gui.screen.ingame.HandledScreens;
+import net.minecraft.client.render.entity.model.EntityModelLayer;
+import net.tsp7.rogue.entity.ModEntities;
+import net.tsp7.rogue.entity.client.EvilGolemModel;
+import net.tsp7.rogue.entity.client.EvilGolemRenderer;
+import net.tsp7.rogue.entity.client.ModModelLayers;
+import net.minecraft.util.Identifier;
+import net.tsp7.rogue.entity.rogueRenderer;
+import net.tsp7.rogue.entity.roguebaseenemyModel;
+import net.tsp7.rogue.screen.ModScreenHandlers;
+import net.tsp7.rogue.screen.UpgradeTableScreen;
+import net.minecraft.client.render.entity.model.EntityModelLayer;
+import net.minecraft.util.Identifier;
+import net.tsp7.rogue.Enemy.rogueRenderer;
+import net.tsp7.rogue.Enemy.roguebaseenemyModel;
 
 public class RogueClient implements ClientModInitializer {
     public static final EntityModelLayer MODEL_CUBE_LAYER = new EntityModelLayer(new Identifier("entitytesting", "rogue"), "main");
