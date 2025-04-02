@@ -17,10 +17,14 @@ import java.util.List;
 public class UpgradeTableRecipe implements Recipe<SimpleInventory> {
     private final ItemStack output;
     private final List<Ingredient> recipeItems;
+    private final int cost;
 
-    public UpgradeTableRecipe(List<Ingredient> ingredients, ItemStack itemStack) {
+
+    public UpgradeTableRecipe(List<Ingredient> ingredients, int cost, ItemStack itemStack) {
         this.output = itemStack;
         this.recipeItems = ingredients;
+        this.cost = cost;
+
     }
 
     @Override
@@ -29,7 +33,8 @@ public class UpgradeTableRecipe implements Recipe<SimpleInventory> {
             return false;
         }
 
-        return recipeItems.get(0).test(inventory.getStack(0));
+        return recipeItems.get(0).test(inventory.getStack(0)) && recipeItems.get(1).test(inventory.getStack(1)) &&
+                (cost <= inventory.getStack(1).getCount());
     }
 
     @Override
@@ -52,6 +57,10 @@ public class UpgradeTableRecipe implements Recipe<SimpleInventory> {
         DefaultedList<Ingredient> list = DefaultedList.ofSize(this.recipeItems.size());
         list.addAll(recipeItems);
         return list;
+    }
+
+    public int getCost() {
+        return cost;
     }
 
     @Override
@@ -82,14 +91,15 @@ public class UpgradeTableRecipe implements Recipe<SimpleInventory> {
         public UpgradeTableRecipe read(Identifier id, JsonObject json) {
             ItemStack output = ShapedRecipe.outputFromJson(JsonHelper.getObject(json, "output"));
 
+            int cost = JsonHelper.getInt(json,"cost", 1);
             JsonArray ingredients = JsonHelper.getArray(json, "ingredients");
-            DefaultedList<Ingredient> inputs = DefaultedList.ofSize(1, Ingredient.EMPTY);
+            DefaultedList<Ingredient> inputs = DefaultedList.ofSize(2, Ingredient.EMPTY);
 
             for (int i = 0; i < inputs.size(); i++) {
                 inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
             }
 
-            return new UpgradeTableRecipe(inputs, output);
+            return new UpgradeTableRecipe(inputs, cost, output);
         }
 
         @Override
@@ -100,8 +110,10 @@ public class UpgradeTableRecipe implements Recipe<SimpleInventory> {
                 inputs.set(i, Ingredient.fromPacket(buf));
             }
 
+            int cost = buf.readInt();
+
             ItemStack output = buf.readItemStack();
-            return new UpgradeTableRecipe(inputs, output);
+            return new UpgradeTableRecipe(inputs, cost, output);
         }
 
         @Override
@@ -110,6 +122,7 @@ public class UpgradeTableRecipe implements Recipe<SimpleInventory> {
             for (Ingredient ing : recipe.getIngredients()) {
                 ing.write(buf);
             }
+            buf.writeInt(recipe.cost);
             buf.writeItemStack(recipe.getOutput(null));
         }
     }

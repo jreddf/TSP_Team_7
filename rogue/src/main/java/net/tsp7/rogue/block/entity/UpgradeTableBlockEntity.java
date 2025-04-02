@@ -25,10 +25,11 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 
 public class UpgradeTableBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory {
-    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2,ItemStack.EMPTY);
+    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3,ItemStack.EMPTY);
 
     private static final int INPUT_SLOT = 0;
-    private static final int OUTPUT_SLOT = 1;
+    private static final int COST_SLOT = 1;
+    private static final int OUTPUT_SLOT = 2;
 
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
@@ -56,7 +57,7 @@ public class UpgradeTableBlockEntity extends BlockEntity implements ExtendedScre
 
             @Override
             public int size() {
-                return 2;
+                return inventory.size();
             }
         };
     }
@@ -127,6 +128,7 @@ public class UpgradeTableBlockEntity extends BlockEntity implements ExtendedScre
         Optional<UpgradeTableRecipe> recipe = getCurrentRecipe();
 
         this.removeStack(INPUT_SLOT, 1);
+        this.removeStack(COST_SLOT,recipe.get().getCost());
 
         this.setStack(OUTPUT_SLOT, new ItemStack(recipe.get().getOutput(null).getItem(), getStack(OUTPUT_SLOT).getCount() + recipe.get().getOutput(null).getCount()));
     }
