@@ -31,11 +31,14 @@ public class ModItemGroups {
                 entries.add(ModItems.MythrilChestplate);
                 entries.add(ModItems.MythrilLeggings);
                 entries.add(ModItems.MythrilBoots);
+                entries.add(ModItems.UPGRADE_TOKEN);
+
                 entries.add(ModBlocks.EXAMPLE_BLOCK);
                 entries.add(ModBlocks.PINE_LOG_BLOCK);
                 entries.add(ModBlocks.CRACKED_RED_STONE_BRICK);
                 entries.add(ModBlocks.PINE_PLANKS_BLOCK);
                 entries.add(ModBlocks.UPGRADE_TABLE);
+
     }).build());
 
     // Helper log

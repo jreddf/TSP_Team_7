@@ -19,19 +19,20 @@ public class UpgradeTableScreenHandler extends ScreenHandler {
 
     public UpgradeTableScreenHandler(int syncId, PlayerInventory inventory, PacketByteBuf buf) {
         this(syncId, inventory, inventory.player.getWorld().getBlockEntity(buf.readBlockPos()),
-                new ArrayPropertyDelegate(2));
+                new ArrayPropertyDelegate(3));
     }
 
     public UpgradeTableScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
         super(ModScreenHandlers.UPGRADE_TABLE_SCREEN_HANDLER, syncId);
-        checkSize(((Inventory) blockEntity),2);
+        checkSize(((Inventory) blockEntity),3);
         this.inventory = ((Inventory) blockEntity);
         playerInventory.onOpen(playerInventory.player);
         this.propertyDelegate = arrayPropertyDelegate;
         this.blockEntity = ((UpgradeTableBlockEntity) blockEntity);
 
         this.addSlot(new Slot(inventory, 0, 80, 11));
-        this.addSlot(new Slot(inventory, 1, 80, 59));
+        this.addSlot(new Slot(inventory, 1, 102, 34));
+        this.addSlot(new Slot(inventory, 2, 80, 59));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);

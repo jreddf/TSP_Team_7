@@ -10,6 +10,7 @@ import net.minecraft.item.SwordItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import net.tsp7.rogue.Rogue;
 import net.tsp7.rogue.item.custom.*;
 
@@ -27,6 +28,9 @@ public class ModItems {
     public static final Item MythrilChestplate = registerItem("mythrilchestplate", new ArmorItem(new MythrilMaterial(), ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
     public static final Item MythrilLeggings = registerItem("mythrilleggings", new ArmorItem(new MythrilMaterial(), ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
     public static final Item MythrilBoots = registerItem("mythrilboots", new ArmorItem(new MythrilMaterial(), ArmorItem.Type.BOOTS, new FabricItemSettings()));
+    public static final Item UPGRADE_TOKEN = registerItem("upgrade_token", new Item(new FabricItemSettings().rarity(Rarity.RARE)));
+
+
     // Method to help add to a vanilla item group
     private static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries) {
         entries.add(EXAMPLE_ITEM);

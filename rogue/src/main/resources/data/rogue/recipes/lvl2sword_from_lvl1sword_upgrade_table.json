@@ -3,8 +3,12 @@
   "ingredients": [
     {
       "item": "rogue:level_1_sword"
+    },
+    {
+      "item": "rogue:upgrade_token"
     }
   ],
+  "cost": 4,
   "output": {
     "item": "rogue:level_2_sword",
     "count": 1
