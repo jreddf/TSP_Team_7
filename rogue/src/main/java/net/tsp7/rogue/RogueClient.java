@@ -23,12 +23,18 @@ import net.minecraft.util.Identifier;
 import net.tsp7.rogue.Enemy.rogueRenderer;
 import net.tsp7.rogue.Enemy.roguebaseenemyModel;
 
+
 public class RogueClient implements ClientModInitializer {
     public static final EntityModelLayer MODEL_CUBE_LAYER = new EntityModelLayer(new Identifier("entitytesting", "rogue"), "main");
     @Override
     public void onInitializeClient() {
         EntityRendererRegistry.register(ModEntities.EVIL_GOLEM, EvilGolemRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(ModModelLayers.EVIL_GOLEM, EvilGolemModel::getTexturedModelData);
+
+        EntityRendererRegistry.register(Rogue.Enemy, rogueRenderer::new);
+        EntityModelLayerRegistry.registerModelLayer(MODEL_CUBE_LAYER, roguebaseenemyModel::getTexturedModelData);
+
+        HandledScreens.register(ModScreenHandlers.UPGRADE_TABLE_SCREEN_HANDLER, UpgradeTableScreen::new);
 
         EntityRendererRegistry.register(Rogue.Enemy, rogueRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(MODEL_CUBE_LAYER, roguebaseenemyModel::getTexturedModelData);
