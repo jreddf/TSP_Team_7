@@ -82,7 +82,7 @@ public class EvilGolemEntity extends HostileEntity {
     public static DefaultAttributeContainer.Builder createEvilGolemAttributes() {
         return MobEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 150)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.4f)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.5f)
                 .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 1.0)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 20.0);
     }

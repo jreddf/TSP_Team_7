@@ -1,5 +1,6 @@
 package net.tsp7.rogue.entity.client;
 
+import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.util.Identifier;
 import net.tsp7.rogue.Rogue;
@@ -7,4 +8,10 @@ import net.tsp7.rogue.Rogue;
 public class ModModelLayers {
     public static final EntityModelLayer EVIL_GOLEM =
             new EntityModelLayer(new Identifier(Rogue.MOD_ID, "evil_golem"), "main");
+
+    public static final EntityModelLayer EVIL_VILLAGER =
+            new EntityModelLayer(new Identifier(Rogue.MOD_ID, "evil_villager"), "main");
+
+    public static final EntityModelLayer EVIL_TRADER =
+            new EntityModelLayer(new Identifier(Rogue.MOD_ID, "evil_trader"), "main");
 }
