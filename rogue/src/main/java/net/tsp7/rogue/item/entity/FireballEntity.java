@@ -49,13 +49,13 @@ public class FireballEntity extends ThrownItemEntity{
     }
 
     @Environment(EnvType.CLIENT)
-    private ParticleEffect getParticleParameters() { // Not entirely sure, but probably has do to with the snowball's particles. (OPTIONAL)
+    private ParticleEffect getParticleParameters() {
         ItemStack itemStack = this.getItem();
         return (ParticleEffect)(itemStack.isEmpty() ? ParticleTypes.EXPLOSION: new ItemStackParticleEffect(ParticleTypes.ITEM, itemStack));
     }
 
     @Environment(EnvType.CLIENT)
-    public void handleStatus(byte status) { // Also not entirely sure, but probably also has to do with the particles. This method (as well as the previous one) are optional, so if you don't understand, don't include this one.
+    public void handleStatus(byte status) {
         if (status == 3) {
             ParticleEffect particleEffect = this.getParticleParameters();
 
@@ -66,13 +66,13 @@ public class FireballEntity extends ThrownItemEntity{
     }
 
     @Override
-    protected void onEntityHit(EntityHitResult entityHitResult) { // called on entity hit.
+    protected void onEntityHit(EntityHitResult entityHitResult) {
         super.onEntityHit(entityHitResult);
         Entity target= entityHitResult.getEntity();
         if (this.getOwner() instanceof LivingEntity owner) {
             DamageSource damageSource = target.getWorld().getDamageSources().thrown(this, owner);
             target.damage(damageSource, 10.0f);
-            target.setOnFireFor(3);
+            target.setOnFireFor(5);
         }
 
         this.discard();
@@ -81,10 +81,7 @@ public class FireballEntity extends ThrownItemEntity{
     @Override
     protected void onCollision(HitResult hitResult) {
         super.onCollision(hitResult);
-
-        // Discard projectile if it hits a block
-        if (hitResult.getType() == HitResult.Type.BLOCK) {
-            this.discard();
-        }
+        this.getWorld().createExplosion(this, this.getX(), this.getY() + (double)(this.getHeight() / 16.0F), this.getZ(), 2.0F, World.ExplosionSourceType.NONE);
+        this.discard();
     }
 }

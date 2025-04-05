@@ -1,6 +1,9 @@
 package net.tsp7.rogue.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.enchantment.Enchantments;
+import net.minecraft.item.ItemGroups;
 import net.tsp7.rogue.Rogue;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -32,7 +35,10 @@ public class ModItemGroups {
                 entries.add(ModItems.MythrilLeggings);
                 entries.add(ModItems.MythrilBoots);
                 entries.add(ModItems.UPGRADE_TOKEN);
-                entries.add(ModItems.WAND);
+                // This seems to be the only way to get the enchanted wand to show up in the creative menu. Any other instances will need to be specifically added
+                ItemStack enchantedWand = new ItemStack(ModItems.WAND);
+                enchantedWand.addEnchantment(Enchantments.LOOTING, 5);
+                entries.add(enchantedWand);
 
                 entries.add(ModBlocks.EXAMPLE_BLOCK);
                 entries.add(ModBlocks.PINE_LOG_BLOCK);
