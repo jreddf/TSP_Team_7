@@ -3,10 +3,7 @@ package net.tsp7.rogue.item;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
-import net.minecraft.item.SwordItem;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -29,6 +26,7 @@ public class ModItems {
     public static final Item MythrilLeggings = registerItem("mythrilleggings", new ArmorItem(new MythrilMaterial(), ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
     public static final Item MythrilBoots = registerItem("mythrilboots", new ArmorItem(new MythrilMaterial(), ArmorItem.Type.BOOTS, new FabricItemSettings()));
     public static final Item UPGRADE_TOKEN = registerItem("upgrade_token", new Item(new FabricItemSettings().rarity(Rarity.RARE)));
+    public static final Item WAND = registerItem("wand", new Wand(new FabricItemSettings()));
 
 
     // Method to help add to a vanilla item group
@@ -45,6 +43,7 @@ public class ModItems {
         entries.add(MythrilChestplate);
         entries.add(MythrilLeggings);
         entries.add(MythrilBoots);
+        entries.add(WAND);
     }
 
     // Helper method for creating new items. Do not modify
