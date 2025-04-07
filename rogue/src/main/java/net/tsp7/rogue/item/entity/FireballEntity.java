@@ -71,7 +71,7 @@ public class FireballEntity extends ThrownItemEntity{
         Entity target= entityHitResult.getEntity();
         if (this.getOwner() instanceof LivingEntity owner) {
             DamageSource damageSource = target.getWorld().getDamageSources().thrown(this, owner);
-            target.damage(damageSource, 10.0f);
+            target.damage(damageSource, 4.0f);
             target.setOnFireFor(5);
         }
 
@@ -81,7 +81,7 @@ public class FireballEntity extends ThrownItemEntity{
     @Override
     protected void onCollision(HitResult hitResult) {
         super.onCollision(hitResult);
-        this.getWorld().createExplosion(this, this.getX(), this.getY() + (double)(this.getHeight() / 16.0F), this.getZ(), 2.0F, World.ExplosionSourceType.NONE);
+        this.getWorld().createExplosion(this, this.getX(), this.getY() + (double)(this.getHeight() / 16.0F), this.getZ(), 2.0F, World.ExplosionSourceType.BLOCK);
         this.discard();
     }
 }
