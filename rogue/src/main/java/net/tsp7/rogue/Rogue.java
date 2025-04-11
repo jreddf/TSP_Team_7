@@ -10,15 +10,19 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.tsp7.rogue.block.ModBlocks;
+import net.tsp7.rogue.block.entity.ModBlockEntities;
 import net.tsp7.rogue.entity.ModEntities;
 import net.tsp7.rogue.entity.custom.BossBlazeEntity;
 import net.tsp7.rogue.entity.custom.DogThingEntity;
 import net.tsp7.rogue.entity.custom.EvilGolemEntity;
+import net.tsp7.rogue.entity.custom.EvilVillagerEntity;
+import net.tsp7.rogue.entity.custom.EvilWanderingTrader;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
-import net.tsp7.rogue.entity.roguebaseenemy;
 import net.tsp7.rogue.item.ModItemGroups;
 import net.tsp7.rogue.item.ModItems;
+import net.tsp7.rogue.recipe.ModRecipes;
+import net.tsp7.rogue.screen.ModScreenHandlers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,12 +30,6 @@ public class Rogue implements ModInitializer {
     public static final String MOD_ID = "rogue";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-    public static final EntityType<roguebaseenemy> Enemy
-            = Registry.register(
-            Registries.ENTITY_TYPE,
-            Identifier.of("entitytesting", "rogue"),
-            EntityType.Builder.create(roguebaseenemy::new, SpawnGroup.CREATURE).setDimensions(0.75f, 0.75f).build("rogue")
-    );
 
     @Override
     public void onInitialize() {
@@ -48,6 +46,7 @@ public class Rogue implements ModInitializer {
         FabricDefaultAttributeRegistry.register(ModEntities.EVIL_GOLEM, EvilGolemEntity.createEvilGolemAttributes());
         FabricDefaultAttributeRegistry.register(ModEntities.DOG_THING, DogThingEntity.createDogThingAttributes());
 		FabricDefaultAttributeRegistry.register(ModEntities.BOSS_BLAZE, BossBlazeEntity.createBlazeAttributes());
-        FabricDefaultAttributeRegistry.register(Enemy, roguebaseenemy.createMobAttributes());
+		FabricDefaultAttributeRegistry.register(ModEntities.EVIL_VILLAGER, EvilVillagerEntity.createEvilVillagerAttributes());
+		FabricDefaultAttributeRegistry.register(ModEntities.EVIL_TRADER, EvilWanderingTrader.createEvilWanderingTraderAttributes());
     }
 }

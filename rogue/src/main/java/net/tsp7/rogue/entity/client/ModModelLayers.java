@@ -11,4 +11,10 @@ public class ModModelLayers {
             new EntityModelLayer(new Identifier(Rogue.MOD_ID, "dog_thing"), "main");
     public static final EntityModelLayer BOSS_BLAZE =
             new EntityModelLayer(new Identifier(Rogue.MOD_ID, "boss_blaze"), "main");
+
+    public static final EntityModelLayer EVIL_VILLAGER =
+            new EntityModelLayer(new Identifier(Rogue.MOD_ID, "evil_villager"), "main");
+
+    public static final EntityModelLayer EVIL_TRADER =
+            new EntityModelLayer(new Identifier(Rogue.MOD_ID, "evil_trader"), "main");
 }

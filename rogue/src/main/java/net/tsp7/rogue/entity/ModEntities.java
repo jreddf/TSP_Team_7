@@ -11,6 +11,7 @@ import net.tsp7.rogue.Rogue;
 import net.tsp7.rogue.entity.custom.BossBlazeEntity;
 import net.tsp7.rogue.entity.custom.DogThingEntity;
 import net.tsp7.rogue.entity.custom.EvilGolemEntity;
+import net.tsp7.rogue.item.entity.FireballEntity;
 
 public class ModEntities {
     public static final EntityType<EvilGolemEntity> EVIL_GOLEM = Registry.register(Registries.ENTITY_TYPE,
@@ -27,4 +28,12 @@ public class ModEntities {
             new Identifier(Rogue.MOD_ID, "boss_blaze"),
             FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, BossBlazeEntity::new)
                     .dimensions(EntityDimensions.fixed(2f,2.5f)).build()); //numbers are size of hitbox
+
+    public static final EntityType<FireballEntity> FIREBALL = Registry.register(Registries.ENTITY_TYPE,
+            new Identifier(Rogue.MOD_ID, "fireball"),
+            FabricEntityTypeBuilder.create(SpawnGroup.MISC, (EntityType.EntityFactory<FireballEntity>) FireballEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.25f, 0.25f))
+                    .trackRangeBlocks(64)
+                    .trackedUpdateRate(10)
+                    .build());
 }

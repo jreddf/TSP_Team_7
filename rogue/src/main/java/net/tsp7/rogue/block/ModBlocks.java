@@ -11,8 +11,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.tsp7.rogue.Rogue;
-import net.minecraft.registry.tag.TagKey;
-import net.minecraft.registry.RegistryKeys;
+import net.tsp7.rogue.block.custom.UpgradeTableBlock;
 
 public class ModBlocks {
     // This is the code that creates the block, use this to create your own blocks.
@@ -20,6 +19,17 @@ public class ModBlocks {
     // If you copy and want to modify some values make sure the copy comes first
     public static final Block EXAMPLE_BLOCK = registerBlock("example_block",
             new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
+    public static final Block PINE_LOG_BLOCK= registerBlock("pine_log_block",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
+    public static final Block PINE_PLANKS_BLOCK= registerBlock("pine_planks_block",
+            new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
+    public static final Block CRACKED_RED_STONE_BRICK = registerBlock("cracked_red_stone_bricks",
+            new Block(FabricBlockSettings.copyOf(Blocks.CRACKED_STONE_BRICKS)));
+
+
+    public static final Block UPGRADE_TABLE = registerBlock("upgrade_table",
+            new UpgradeTableBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
+
 
 
     // Everything below are helper methods for creating new blocks. Do not modify
@@ -37,13 +47,6 @@ public class ModBlocks {
         Rogue.LOGGER.info("Registering ModBlocks for " + Rogue.MOD_ID);
     }
 
-    public static final Block PINE_LOG_BLOCK= registerBlock("pine_log_block",
-       new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
 
-    public static final Block PINE_PLANKS_BLOCK= registerBlock("pine_planks_block",
-       new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
-    
-    public static final Block CRACKED_RED_STONE_BRICK = registerBlock("cracked_red_stone_bricks",
-       new Block(FabricBlockSettings.copyOf(Blocks.CRACKED_STONE_BRICKS)));
 }
 
