@@ -4,14 +4,15 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.util.Hand;
+import net.tsp7.rogue.entity.custom.DogThingEntity;
 import net.tsp7.rogue.entity.custom.EvilGolemEntity;
 
-public class EvilGolemAttackGoal extends MeleeAttackGoal {
-    private final EvilGolemEntity entity;
+public class DogThingAttackGoal extends MeleeAttackGoal {
+    private final DogThingEntity entity;
 
-    public EvilGolemAttackGoal(PathAwareEntity mob, double speed, boolean pauseWhenMobIdle) {
+    public DogThingAttackGoal(PathAwareEntity mob, double speed, boolean pauseWhenMobIdle) {
         super(mob, speed, pauseWhenMobIdle);
-        entity = ((EvilGolemEntity) mob);
+        entity = ((DogThingEntity) mob);
     }
 
     @Override

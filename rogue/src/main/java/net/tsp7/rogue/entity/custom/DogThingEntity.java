@@ -13,6 +13,8 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -21,13 +23,19 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.tsp7.rogue.entity.ai.EvilGolemAttackGoal;
+import net.tsp7.rogue.entity.ai.DogThingAttackGoal;
 import org.jetbrains.annotations.Nullable;
 
-public class EvilGolemEntity extends HostileEntity {
+public class DogThingEntity extends HostileEntity {
     private static final TrackedData<Boolean> ATTACKING =
-            DataTracker.registerData(EvilGolemEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+            DataTracker.registerData(DogThingEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+    private static final TrackedData<Integer> ATTACK_FRAME =
+            DataTracker.registerData(DogThingEntity.class, TrackedDataHandlerRegistry.INTEGER);
+
+    private boolean playedAttackAnimation = false;
+
 
     public final AnimationState idleAnimationState = new AnimationState();
     private int idleAnimationTimeout = 0;
@@ -38,55 +46,99 @@ public class EvilGolemEntity extends HostileEntity {
     public int attackTickCounter = -1;
     public LivingEntity attackTarget = null;
 
-
-    private final ServerBossBar bossBar = (ServerBossBar)new ServerBossBar(Text.literal("Evil Golem"), BossBar.Color.RED, BossBar.Style.PROGRESS).setDarkenSky(false);
+    private final ServerBossBar bossBar = (ServerBossBar)new ServerBossBar(Text.literal("Dog Thing"), BossBar.Color.GREEN, BossBar.Style.PROGRESS).setDarkenSky(false);
 
     private void setupAnimationStates() {
         if (this.idleAnimationTimeout <= 0) {
-            this.idleAnimationTimeout = this.random.nextInt(40) + 80;
+            this.idleAnimationTimeout = this.random.nextInt(30) + 60;
             this.idleAnimationState.start(this.age);
         } else {
             this.idleAnimationTimeout--;
         }
 
-        if(this.isAttacking() && attackAnimationTimeout <= 0) {
-            attackAnimationTimeout = 20;
+        int frame = this.dataTracker.get(ATTACK_FRAME);
+
+        // Safely trigger animation near start of attack
+        if ((frame >= 0 && frame <= 1) && !playedAttackAnimation) {
+            attackAnimationTimeout = 10;
             attackAnimationState.start(this.age);
-        } else {
-            --this.attackAnimationTimeout;
+            playedAttackAnimation = true;
+        } else if (frame > 1) {
+            playedAttackAnimation = false;
         }
 
-        if(!this.isAttacking()) {
+        if (!this.isAttacking() || frame >= 10) {
             attackAnimationState.stop();
-            attackAnimationTimeout = 0;
         }
     }
 
     @Override
     public void tick() {
         super.tick();
+
         if (this.getWorld().isClient()) {
             setupAnimationStates();
         } else {
-            if (isAttacking()) {
-                attackTickCounter++;
+            // Handle invisibility based on player gaze
+            boolean anyPlayerLooking = false;
+            for (PlayerEntity player : this.getWorld().getPlayers()) {
+                if (player.squaredDistanceTo(this) < 256 && isPlayerLookingAtEntity(player)) {
+                    anyPlayerLooking = true;
+                   break;
+               }
+            }
 
-                if (attackTickCounter == 10 && attackTarget != null && this.canSee(attackTarget)) {
-                    this.swingHand(Hand.MAIN_HAND);
-                    this.tryAttack(attackTarget);
-                }
+            if (anyPlayerLooking) {
+                this.addStatusEffect(new StatusEffectInstance(StatusEffects.INVISIBILITY, 20, 0, false, false));
+            } else {
+                this.removeStatusEffect(StatusEffects.INVISIBILITY);
+            }
 
-                if (attackTickCounter >= 20) {
-                    setAttacking(false);
-                    attackTarget = null;
-                    attackTickCounter = -1;
+            // Attack logic with cooldown
+            if (attackCooldownTicks > 0) {
+                attackCooldownTicks--;
+            }
+            else {
+                if (isAttacking()) {
+                    attackTickCounter++;
+                    this.dataTracker.set(ATTACK_FRAME, attackTickCounter);
+
+                    if (attackTickCounter == 5 && attackTarget != null && this.canSee(attackTarget)) {
+                        if (attackCooldownTicks <= 0) {
+                            this.swingHand(Hand.MAIN_HAND);
+                            this.tryAttack(attackTarget);
+                            attackCooldownTicks = 8; // shorter cooldown
+                        }
+                    }
+
+                    if (attackTickCounter >= 10) {
+                        setAttacking(false);
+                        attackTarget = null;
+                        attackTickCounter = -1;
+                        this.dataTracker.set(ATTACK_FRAME, -1);
+                    }
                 }
             }
         }
     }
 
+    private boolean isPlayerLookingAtEntity(PlayerEntity player) {
+        Vec3d lookVec = player.getRotationVec(1.0F).normalize();
+        Vec3d toEntity = this.getBoundingBox().getCenter().subtract(player.getCameraPosVec(1.0F));
+        double distance = toEntity.length();
 
-    public EvilGolemEntity(EntityType<? extends HostileEntity> entityType, World world) {
+        toEntity = toEntity.normalize();
+        double dot = lookVec.dotProduct(toEntity);
+
+        // 1.0 - θ defines how narrow the cone is. 0.03 allows about 10°.
+        return dot > 1.0 - 0.15 / distance && player.canSee(this);
+    }
+
+
+    private int attackCooldownTicks = 0;
+
+
+    public DogThingEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
     }
 
@@ -95,19 +147,19 @@ public class EvilGolemEntity extends HostileEntity {
         super.initGoals();
         this.setPersistent();
         this.goalSelector.add(1, new SwimGoal(this));
-        this.goalSelector.add(2, new EvilGolemAttackGoal(this, 1.1, true));
+        this.goalSelector.add(2, new DogThingAttackGoal(this, 1.2, true));
         this.goalSelector.add(3, new WanderAroundFarGoal(this, 0.8));
-        this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 10.0F));
-        this.goalSelector.add(5, new LookAroundGoal(this));
+        this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
+        this.goalSelector.add(4, new LookAroundGoal(this));
         this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
     }
 
-    public static DefaultAttributeContainer.Builder createEvilGolemAttributes() {
+    public static DefaultAttributeContainer.Builder createDogThingAttributes() {
         return MobEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 250)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3f)
-                .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 1.0)
-                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 18.0);
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 100)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.5f)
+                .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 2.0)
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 8.0);
     }
 
     @Override
@@ -135,6 +187,8 @@ public class EvilGolemEntity extends HostileEntity {
     protected void initDataTracker() {
         super.initDataTracker();
         this.dataTracker.startTracking(ATTACKING, false);
+        this.dataTracker.startTracking(ATTACK_FRAME, -1);
+
     }
 
     @Override
