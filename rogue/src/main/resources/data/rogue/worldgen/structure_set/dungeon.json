@@ -1,0 +1,14 @@
+{
+    "structures": [
+        {
+            "structure": "rogue:dungeon",
+            "weight": 1
+        }
+    ],
+    "placement": {
+        "salt":69,
+        "spacing": 14,
+        "separation": 7,
+        "type": "random_spread"
+    }
+}
