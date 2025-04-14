@@ -8,9 +8,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.tsp7.rogue.Rogue;
-import net.tsp7.rogue.entity.custom.BossBlazeEntity;
-import net.tsp7.rogue.entity.custom.DogThingEntity;
-import net.tsp7.rogue.entity.custom.EvilGolemEntity;
+import net.tsp7.rogue.entity.custom.*;
 import net.tsp7.rogue.item.entity.FireballEntity;
 
 public class ModEntities {
@@ -28,6 +26,16 @@ public class ModEntities {
             new Identifier(Rogue.MOD_ID, "boss_blaze"),
             FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, BossBlazeEntity::new)
                     .dimensions(EntityDimensions.fixed(2f,2.5f)).build()); //numbers are size of hitbox
+
+    public static final EntityType<EvilVillagerEntity> EVIL_VILLAGER = Registry.register(Registries.ENTITY_TYPE,
+            new Identifier(Rogue.MOD_ID, "evil_villager"),
+            FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, EvilVillagerEntity::new)
+                    .dimensions(EntityDimensions.fixed(1f,2f)).build()); //numbers are size of hitbox
+
+    public static final EntityType<EvilWanderingTrader> EVIL_TRADER = Registry.register(Registries.ENTITY_TYPE,
+            new Identifier(Rogue.MOD_ID, "evil_trader"),
+            FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, EvilWanderingTrader::new)
+                    .dimensions(EntityDimensions.fixed(1f,2f)).build()); //numbers are size of hitbox
 
     public static final EntityType<FireballEntity> FIREBALL = Registry.register(Registries.ENTITY_TYPE,
             new Identifier(Rogue.MOD_ID, "fireball"),

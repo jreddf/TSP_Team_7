@@ -47,7 +47,7 @@ public BossBlazeModel(ModelPart root) {
 
             this.animateMovement(ModAnimations.boss_walk, limbSwing, limbSwingAmount, 2f, 2.5f);
             this.updateAnimation(entity.idleAnimationState, ModAnimations.idle, ageInTicks, 1f);
-            //this.updateAnimation(entity.attackAnimationState, ModAnimations.attack, ageInTicks, 1f);
+            this.updateAnimation(entity.attackAnimationState, ModAnimations.boss_attack, ageInTicks, 1f);
         }
         private void setHeadAngles(float headYaw, float headPitch) {
             headYaw = MathHelper.clamp(headYaw, -30.0F, 30.0F);
