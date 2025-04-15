@@ -2,34 +2,26 @@
   "type": "rogue:roguedimension_type",
   "generator": {
     "type": "minecraft:noise",
-    "settings": "overworld",
+    "settings": "minecraft:overworld",
+    "structure_overrides": [
+      {
+        "structure_set": "rogue:dungeon"
+      },
+      {
+        "structure_set": "minecraft:villages"
+      }
+      
+    ],
+    "coordinate_scale": 16,
     "biome_source": {
-      "type": "minecraft:multi_noise",
+      "type": "minecraft:checkerboard",
+      "scale": 16,
       "biomes": [
-        {
-          "biome": "minecraft:snowy_plains",
-          "parameters": {
-            "temperature": 0,
-            "humidity": -0.2,
-            "continentalness": 0,
-            "erosion": 0,
-            "weirdness": 0,
-            "depth": 0,
-            "offset": 0
-          }
-        },
-        {
-          "biome": "minecraft:plains",
-          "parameters": {
-            "temperature": 0,
-            "humidity": -0.12,
-            "continentalness": 0,
-            "erosion": 0,
-            "weirdness": 0,
-            "depth": 0,
-            "offset": 0
-          }
-        }
+        "rogue:roguebiome",
+        "rogue:roguejungle",
+        "rogue:roguecrimson",
+        "rogue:rogueplains",
+        "rogue:roguespikes"
       ]
     }
   }
