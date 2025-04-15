@@ -1,0 +1,12 @@
+{
+    "replace": false,
+
+    "_comment": "Specifies what biomes the dungeon spawns in",
+    "values": [
+        "rogue:roguebiome",
+        "rogue:roguecrimson",
+        "rogue:roguejungle",
+        "rogue:rogueplains",
+        "rogue:roguespikes"
+    ]
+}

@@ -1,0 +1,60 @@
+{
+    "name": "rogue:street_pool",
+    "fallback": "minecraft:empty",
+    "elements": [
+        {
+            "weight": 1,
+            "element": {
+                "location": "rogue:parts/streets/l_1",
+                "processors" : "minecraft:empty",
+                "projection" : "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 1,
+            "element": {
+                "location": "rogue:parts/streets/l_2",
+                "processors" : "minecraft:empty",
+                "projection" : "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 1,
+            "element": {
+                "location": "rogue:parts/streets/strait_1",
+                "processors" : "minecraft:empty",
+                "projection" : "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 1,
+            "element": {
+                "location": "rogue:parts/streets/strait_2",
+                "processors" : "minecraft:empty",
+                "projection" : "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 1,
+            "element": {
+                "location": "rogue:parts/streets/t_1",
+                "processors" : "minecraft:empty",
+                "projection" : "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 1,
+            "element": {
+                "location": "rogue:parts/streets/t_2",
+                "processors" : "minecraft:empty",
+                "projection" : "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        }
+    ]
+}

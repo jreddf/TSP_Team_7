@@ -1,0 +1,33 @@
+{
+    "name": "rogue:room_pool",
+    "fallback": "minecraft:empty",
+    "elements": [
+        {
+            "weight" : 1,
+            "element": {
+                "location": "rogue:parts/rooms/small/1",
+                "processors": "minecraft:empty",
+                    "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight" : 1,
+            "element": {
+                "location": "rogue:parts/rooms/small/end_1",
+                "processors": "minecraft:empty",
+                    "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight" : 1,
+            "element": {
+                "location": "rogue:parts/rooms/boss/1",
+                "processors": "minecraft:empty",
+                    "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        }
+    ]
+}

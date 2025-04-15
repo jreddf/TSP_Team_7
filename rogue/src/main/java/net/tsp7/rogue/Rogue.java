@@ -23,6 +23,7 @@ import net.tsp7.rogue.item.ModItemGroups;
 import net.tsp7.rogue.item.ModItems;
 import net.tsp7.rogue.recipe.ModRecipes;
 import net.tsp7.rogue.screen.ModScreenHandlers;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,7 +37,7 @@ public class Rogue implements ModInitializer {
         ModItemGroups.registerItemGroups();
         ModItems.registerModItems();
         ModBlocks.registerModBlocks();
-
+ 
         CustomPortalBuilder.beginPortal()
                 .frameBlock(Blocks.REINFORCED_DEEPSLATE)
                 .lightWithItem(Items.NETHERITE_SWORD)
