@@ -157,10 +157,10 @@ public class DogThingEntity extends HostileEntity {
 
     public static DefaultAttributeContainer.Builder createDogThingAttributes() {
         return MobEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 100)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.5f)
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 75)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.4f)
                 .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 2.0)
-                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 8.0);
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 4.0);
     }
 
     @Override
