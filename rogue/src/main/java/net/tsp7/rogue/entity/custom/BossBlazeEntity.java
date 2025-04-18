@@ -50,7 +50,6 @@ public class BossBlazeEntity extends BlazeEntity {
         return this.dataTracker.get(ATTACKING);
     }
 
-
     private void setupAnimationStates() {
         if (this.idleAnimationTimeout <= 0) {
             this.idleAnimationTimeout = this.random.nextInt(40) + 40;
@@ -69,19 +68,17 @@ public class BossBlazeEntity extends BlazeEntity {
         this.goalSelector.add(7, new WanderAroundFarGoal(this, 1.0, 0.0F));
         // target selection
         this.targetSelector.add(1, new RevengeGoal(this).setGroupRevenge());
-        this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
+        this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
+        this.targetSelector.add(2, new RevengeGoal(this));
     }
-
-
 
     public static DefaultAttributeContainer.Builder createBlazeAttributes() {
         return HostileEntity.createHostileAttributes()
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 15.0)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.25F)
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 50.0)
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 300);
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 250);
     }
-
 
     @Override
     public boolean handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource) {
@@ -99,7 +96,7 @@ public class BossBlazeEntity extends BlazeEntity {
             Vec3d bounced = new Vec3d(-v.x, v.y, -v.z);
             proj.setVelocity(bounced);
 
-            // Nudge it out of our hitbox so it doesn't immediately re‑collide
+            // Nudge it out of our hit-box, so it doesn't immediately re‑collide
             Vec3d pos = this.getPos();
             proj.setPosition(
                     pos.x + bounced.x * 0.5,

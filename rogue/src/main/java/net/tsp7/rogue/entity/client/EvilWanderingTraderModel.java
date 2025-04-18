@@ -4,6 +4,7 @@ import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.util.math.MathHelper;
 import net.tsp7.rogue.entity.animation.ModAnimations;
 import net.tsp7.rogue.entity.custom.EvilVillagerEntity;
 import net.tsp7.rogue.entity.custom.EvilWanderingTrader;
@@ -47,14 +48,24 @@ public class EvilWanderingTraderModel <T extends EvilWanderingTrader> extends Si
     }
 
     @Override
-    public ModelPart getPart() {
-        return body;
-    }
-
-    @Override
-    public void setAngles(T entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
+    public void setAngles(EvilWanderingTrader entity, float limbAngle, float limbDistance, float animationProgress, float netHeadYaw, float headPitch) {
+        this.getPart().traverse().forEach(ModelPart::resetTransform);
+        this.setHeadAngles(netHeadYaw, headPitch);
         this.animateMovement(ModAnimations.evil_walk, limbAngle, limbDistance, 2f, 2.5f);
         this.updateAnimation(entity.idleAnimationState, ModAnimations.evil_idle, animationProgress, 1f);
         this.updateAnimation(entity.attackAnimationState, ModAnimations.evil_attack, animationProgress, 1f);
+    }
+
+    private void setHeadAngles(float headYaw, float headPitch) {
+        headYaw = MathHelper.clamp(headYaw, -30.0F, 30.0F);
+        headPitch = MathHelper.clamp(headPitch, -25.0F, 45.0F);
+
+        this.head.yaw = headYaw * 0.017453292F;
+        this.head.pitch = headPitch * 0.017453292F;
+    }
+
+    @Override
+    public ModelPart getPart() {
+        return body;
     }
 }

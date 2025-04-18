@@ -152,14 +152,15 @@ public class DogThingEntity extends HostileEntity {
         this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.add(4, new LookAroundGoal(this));
         this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
+        this.targetSelector.add(2, new RevengeGoal(this));
     }
 
     public static DefaultAttributeContainer.Builder createDogThingAttributes() {
         return MobEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 100)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.5f)
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 75)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.4f)
                 .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 2.0)
-                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 8.0);
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 4.0);
     }
 
     @Override

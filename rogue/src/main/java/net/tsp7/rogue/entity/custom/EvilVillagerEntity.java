@@ -74,14 +74,15 @@ public class EvilVillagerEntity extends HostileEntity {
         this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.add(4, new LookAroundGoal(this));
         this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
+        this.targetSelector.add(2, new RevengeGoal(this));
     }
 
     public static DefaultAttributeContainer.Builder createEvilVillagerAttributes() {
         return MobEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 12)
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 30)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.7f)
                 .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 0.5)
-                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 0.5);
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 1);
     }
 
     @Override

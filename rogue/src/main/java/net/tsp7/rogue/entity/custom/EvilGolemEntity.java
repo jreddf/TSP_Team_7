@@ -100,14 +100,15 @@ public class EvilGolemEntity extends HostileEntity {
         this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 10.0F));
         this.goalSelector.add(5, new LookAroundGoal(this));
         this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
+        this.targetSelector.add(2, new RevengeGoal(this));
     }
 
     public static DefaultAttributeContainer.Builder createEvilGolemAttributes() {
         return MobEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 350)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3f)
-                .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 1.0)
-                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 16.0);
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 300)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.27f)
+                .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 5.0)
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 14.0);
     }
 
     @Override
