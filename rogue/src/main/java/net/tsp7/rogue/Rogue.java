@@ -37,7 +37,10 @@ public class Rogue implements ModInitializer {
         ModItemGroups.registerItemGroups();
         ModItems.registerModItems();
         ModBlocks.registerModBlocks();
- 
+        ModBlockEntities.registerBlockEntities();
+        ModScreenHandlers.registerScreenHandlers();
+        ModRecipes.registerRecipes();
+
         CustomPortalBuilder.beginPortal()
                 .frameBlock(Blocks.REINFORCED_DEEPSLATE)
                 .lightWithItem(Items.NETHERITE_SWORD)
